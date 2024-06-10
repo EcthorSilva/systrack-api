@@ -11,13 +11,13 @@ async function getDiskInfo() {
          const fsSize = fsSizes.find(fs => fs.fs === blockDevice?.mount);
 
          return {
-            device: disk.device,
-            type: disk.type,
-            label: blockDevice?.label || 'Unknown',
-            name: blockDevice?.name || 'Unknown',
-            size: fsSize?.size || 0,
-            used: fsSize?.used || 0,
-            use: fsSize?.use || 0
+            device: disk.device, // e.g. /dev/sda
+            type: disk.type, // HD, SSD, NVMe
+            label: blockDevice?.label || 'Unknown', // label
+            name: blockDevice?.name || 'Unknown', // name
+            size: fsSize?.size || 0, // sizes in bytes
+            used: fsSize?.used || 0, // used in bytes
+            use: fsSize?.use || 0 // used in %
          };
       });
 

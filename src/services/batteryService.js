@@ -8,7 +8,7 @@ async function getBatteryInfo() {
          hasBattery: battery.hasBattery, // indicates presence of battery
          cycleCount: battery.cycleCount, // numbers of recharges
          isCharging: battery.isCharging, // indicates if battery is charging
-         maxCapacity: battery.maxCapacity, // 	max capacity of battery (mWh)
+         maxCapacity: battery.maxCapacity, // max capacity of battery (mWh)
          currentCapacity: battery.currentCapacity, //	current capacity of battery (mWh)
          designedCapacity: battery.designedCapacity, // designed capacity of battery (mWh)
          percent: battery.percent, // remaining energy in percentage
@@ -26,7 +26,7 @@ async function getBatteryInfo() {
 }
 
 function calculateBatteryHealth(battery) {
-   const currentCapacity = battery.currentcapacity;
+   const currentCapacity = battery.currentCapacity;
    const designedCapacity = battery.designedCapacity;
 
    if (!currentCapacity || !designedCapacity) {
