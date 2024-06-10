@@ -14,6 +14,8 @@ async function getBatteryInfo() {
          acConnected: battery.acConnected // indicates if AC is connected
       };
 
+      console.log(batteryInfo);
+
       return batteryInfo;
    } catch (error) {
       console.error('Error retrieving battery information:', error);
