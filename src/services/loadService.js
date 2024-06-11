@@ -5,10 +5,10 @@ async function getLoadInfo() {
       const Load = await si.currentLoad();
 
       const LoadInfo = {
-         avgLoad: Load.avgLoad.toFixed(2),
-         systemLoad: Load.currentLoadSystem.toFixed(2),
-         userLoad: Load.currentLoadUser.toFixed(2),
-         niceLoad: Load.currentLoadNice.toFixed(2)
+         Load: Load.currentLoad.toFixed(2), // CPU load in %
+         systemLoad: Load.currentLoadSystem.toFixed(2), // CPU load system in %
+         userLoad: Load.currentLoadUser.toFixed(2), // CPU load user in %
+         niceLoad: Load.currentLoadNice.toFixed(2) // CPU load nice in %
       };
 
       console.log(LoadInfo);
@@ -19,6 +19,20 @@ async function getLoadInfo() {
       throw error;
    }
 }
+
+getLoadInfo();
+
+setInterval(() => {
+   getLoadInfo().then(({ Load, systemLoad, userLoad, niceLoad }) => {
+      console.log('Uso da CPU:', Load + '%');
+      console.log('Uso do sistema:', systemLoad + '%');
+      console.log('Uso do usuário:', userLoad +'%');
+      console.log('Uso do nice:', niceLoad + '%');
+   }).catch(error => {
+      console.error('Erro ao obter informações de uso da CPU:', error);
+   });
+}, 1000); // Intervalo de 1 segundo
+
 
 // module.exports = {
 //    getMemoryInfo
