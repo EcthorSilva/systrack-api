@@ -12,11 +12,13 @@ const memoryRoutes = require('./memoryRoutes');
 const batteryRoutes = require('./batteryRoutes');
 const networkRoutes = require('./networkRoutes');
 const cpuLoadRoutes = require('./cpuLoadRoutes');
+const gpuRoutes = require('./gpuRoutes');
 
 router.use('/disk', diskRoutes);
 router.use('/memory', memoryRoutes);
 router.use('/battery', batteryRoutes);
 router.use('/network', networkRoutes);
 router.use('/cpu-load', cpuLoadRoutes);
+router.use('/gpu', gpuRoutes);
 
 module.exports = router;
