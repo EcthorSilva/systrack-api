@@ -1,21 +1,11 @@
 const cpuLoadService = require('../services/cpuLoadService');
 
-let cpuLoadInfo = {
-   currentLoad: 0,
-   currentLoadSystem: 0,
-   currentLoadUser: 0,
-   currentLoadNice: 0
-};
-
-async function getCpuLoadInfo(req, res) {
+async function getCpuLoadInfo(req, res, next) {
    try {
-      // Updates CPU load data with each API call
-      cpuLoadInfo = await cpuLoadService.getCpuLoadInfo();
-
-      res.json(cpuLoadInfo);
+      const diskInfo = await cpuLoadService.getCpuLoadInfo();
+      res.json(diskInfo);
    } catch (error) {
-      console.error('Error retrieving CPU load information:', error);
-      res.status(500).json({ error: 'Internal Server Error' });
+      next(error);
    }
 }
 
